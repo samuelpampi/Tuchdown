@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+
+    <script src="https://kit.fontawesome.com/8edc7916a1.js" crossorigin="anonymous"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9LWIfJ9Mhe7UughWF-zIhF6p2IZAm9BA&callback=console.debug&libraries=maps,marker&v=beta"></script>
+</head>
+<body>
+    <!-- Barra principal de navegacion -->
+    <nav class="container-fluid p-3 d-flex align-items-center position-fixed z-2 bg-white">
+        <img id="logo-nfl" src="./img/nfl-logo.png" alt="Logo de la NFL" height="150px">
+        <h1 class="fs-1 fw-bold">Tuchdown</h1>
+        <img id="ball" src="./img/ball.png" alt="Balon de futbol americano" height="100px">
+    </nav>
+
+    <!-- Seccion principal -->
+    <main>
+        <!-- Seccion donde se muestra el carrusel de los partidos de la semana -->
+        <section id="match-manager" class="container-fluid d-flex flex-column justify-content-center align-items-center gap-5">
+            <h2 class="fw-bold">Partidos de la semana</h2>
+            <!-- Carrusel de cards de partidos -->
+            <div id="carousel"  class="d-flex justify-content-between align-items-center">   
+
+                <div class="card text-center px-3 py-4 d-flex flex-column justify-content-around align-items-center">                    
+                    <!-- Logos equipos -->
+                    <div class="d-flex justify-content-around align-items-center gap-3 mb-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="./img/vikings.png"  alt="Logo equipo local" width="100px">
+                            <p id="local-team-name" class="fs2 fw-bold">Vikings</p>
+                        </div>
+                        <p class="fs2 fw-semibold">VS</p>
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="./img/vikings.png"  alt="Logo equipo local" width="100px">
+                            <p id="local-team-name" class="fs2 fw-bold">Vikings</p>
+                        </div>
+                    </div>
+                    <!-- Lugar, fecha y hora -->
+                    <div>
+                        <h5 class="card-title fw-semibold fs-4">Mineapolis</h5>
+                        <p class="card-text fw-medium fs-6">01-10-2025</p>
+                        <p class="card-text fw-medium fs-6">03:00</p>  
+                    </div>                                   
+                </div>
+
+                <div class="card text-center px-3 py-4 d-flex flex-column justify-content-around align-items-center">                    
+                    <!-- Logos equipos -->
+                    <div class="d-flex justify-content-around align-items-center gap-3 mb-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="./img/vikings.png"  alt="Logo equipo local" width="100px">
+                            <p id="local-team-name" class="fs2 fw-bold">Vikings</p>
+                        </div>
+                        <p class="fs2 fw-semibold">VS</p>
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="./img/vikings.png"  alt="Logo equipo local" width="100px">
+                            <p id="local-team-name" class="fs2 fw-bold">Vikings</p>
+                        </div>
+                    </div>
+                    <!-- Lugar, fecha y hora -->
+                    <div>
+                        <h5 class="card-title fw-semibold fs-4">Mineapolis</h5>
+                        <p class="card-text fw-medium fs-6">01-10-2025</p>
+                        <p class="card-text fw-medium fs-6">03:00</p>  
+                    </div>                                   
+                </div>
+
+                <div class="card text-center px-3 py-4 d-flex flex-column justify-content-around align-items-center">                    
+                    <!-- Logos equipos -->
+                    <div class="d-flex justify-content-around align-items-center gap-3 mb-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="./img/vikings.png"  alt="Logo equipo local" width="100px">
+                            <p id="local-team-name" class="fs2 fw-bold">Vikings</p>
+                        </div>
+                        <p class="fs2 fw-semibold">VS</p>
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="./img/vikings.png"  alt="Logo equipo local" width="100px">
+                            <p id="local-team-name" class="fs2 fw-bold">Vikings</p>
+                        </div>
+                    </div>
+                    <!-- Lugar, fecha y hora -->
+                    <div>
+                        <h5 class="card-title fw-semibold fs-4">Mineapolis</h5>
+                        <p class="card-text fw-medium fs-6">01-10-2025</p>
+                        <p class="card-text fw-medium fs-6">03:00</p>  
+                    </div>                                   
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Seccion principal donde se muestra los datos de cada equipo -->
+        <section id="team-manager" class="d-flex p-5 justify-content-center"> 
+            <!--  Seccion de lista de equipos  -->                         
+            <div id="equipos" class="d-flex flex-column gap-5">
+                <h2 class="fs-1 fw-bold">Equipos</h2>
+                <div class="select-conference px-2 fs-4 fw-medium d-flex align-items-center justify-content-between">
+                    <p class="m-0">Conferencia Nacional</p>
+                    <i class="fa-solid fa-sort-down"></i>
+                </div>
+
+                <div id="grid-nfc" class="grid-teams">
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                </div>
+
+                <div class="select-conference px-2 fs-4 fw-medium d-flex align-items-center justify-content-between">
+                    <p class="m-0">Conferencia Americana</p>
+                    <i class="fa-solid fa-sort-down"></i>
+                </div>
+
+                <div id="grid-afc" class="grid-teams">
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                    <div><img src="./img/vikings.png" alt="headhsot" width="70px"></div>
+                </div>
+            </div>
+
+            <!--  Seccion de los jugadores de cada equipo  -->
+            <div id="jugadores" class="d-flex flex-column gap-5">
+                <!--  Equipo Ofensivo  -->
+                <div class="select-conference px-2 fs-4 fw-medium d-flex align-items-center justify-content-between">
+                    <p class="m-0">Equipo Offensivo</p>
+                    <i class="fa-solid fa-sort-down"></i>
+                </div>
+
+                <div id="grid-off" class="grid-jugadores">
+                    <div class="player-card rounded-1 d-flex flex-column align-items-center text-center">
+                        <img class="headshot-player" src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="name-player fs-5 fw-semibold">P. Mahomes</p>
+                        <p class="info-player fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                </div>
+
+                <!--  Equipo Defensivo  -->
+                <div class="select-conference px-2 fs-4 fw-medium d-flex align-items-center justify-content-between">
+                    <p class="m-0">Equipo Defensivo</p>
+                    <i class="fa-solid fa-sort-down"></i>
+                </div>
+
+                <div id="grid-deff" class="grid-jugadores">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                </div>
+
+                <!--  Equipo Especial  -->
+                <div class="select-conference px-2 fs-4 fw-medium d-flex align-items-center justify-content-between">
+                    <p class="m-0">Equipo Especial</p>
+                    <i class="fa-solid fa-sort-down"></i>
+                </div>
+
+                <div id="grid-st" class="grid-jugadores">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="./img/headshot.png" alt="headhsot" width="90px">
+                        <p class="fs-5 fw-medium">P. Mahomes</p>
+                        <p class="fs-6 fw-light">#1 - Quarterback</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seccion del mapa y estadio -->
+        <section id="stadium-manager" class="pt-5 d-flex flex-column justify-content-center align-items-center">
+            <h2 id="stadium-name" class="fs-1 fw-bold">Highmark Stadium</h2>
+            <p id="staudion-city" class="fs-4 fw-medium">Orchard Park - NY</p>
+            <div id="map"></div>    
+        </section> 
+
+        <!-- Seccion del ranking -->
+        <section id="ranking-manager" class="pt-5 d-flex flex-column justify-content-center align-items-center gap-5">
+            <!-- Tabla Conferencia Americana-->
+            <h2 class="fs-1 mt-5 fw-bold">Clasificacion</h2>           
+            <div id="afc-ranking" class="conference-ranking">
+                <table id="afc-table" class="conference-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Conferencia Americana</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Divisiones AFC -->
+                <table id="nfc-nth-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>AFC - Division norte</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="nfc-wst-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>AFC - Division oeste</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="nfc-est-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>AFC - Division este</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="nfc-sth-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>AFC - Division sur</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Tabla Conferencia Nacional-->
+            <div id="nfc-ranking" class="conference-ranking">
+                <table id="nfc-table" class="conference-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Conferencia Americana</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Divisiones NFC -->
+                <table id="afc-nth-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>NFC - Division norte</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="afc-wst-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>NFC - Division oeste</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="afc-est-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>NFC - Division este</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="afc-sth-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>NFC - Division sur</th>
+                            <th>PJ</th>
+                            <th>G</th>
+                            <th>E</th>
+                            <th>P</th>
+                            <th>PT</th>
+                            <th>%PG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
+                            <td>17</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>285:326</td>
+                            <td>0.882</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+        </section>
+        
+
+    </main>
+</body>
+</html>
