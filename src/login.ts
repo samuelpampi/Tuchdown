@@ -14,7 +14,7 @@ let current_week: number;
 //Carga la temporada actual
 async function loadCurrentSeason() {
     try {
-        const response = await fetch('https://api.sportsdata.io/v3/nfl/scores/json/CurrentSeason?key=83067119f3104d2e989a5c5238dc1fad');
+        let response:Response = await fetch('https://api.sportsdata.io/v3/nfl/scores/json/CurrentSeason?key=83067119f3104d2e989a5c5238dc1fad');
 
         if (!response.ok) {
             throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -30,7 +30,7 @@ async function loadCurrentSeason() {
 //Carga la semana actual
 async function loadCurrentWeek() {
     try {
-        const response = await fetch('https://api.sportsdata.io/v3/nfl/scores/json/CurrentWeek?key=83067119f3104d2e989a5c5238dc1fad');
+        let response:Response = await fetch('https://api.sportsdata.io/v3/nfl/scores/json/CurrentWeek?key=83067119f3104d2e989a5c5238dc1fad');
 
         if (!response.ok) {
             throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -63,8 +63,8 @@ function rellenarSelects() {
     let option = document.createElement('option');
     option.text = `Current Week`;
     option.value = current_week.toString();
+    option.selected = true;
     week_select.add(option);
-    week_select.selectedIndex = 0;
 
     //Agregar las semanas 1-18
     for (let week = 1; week <= 18; week++) {
