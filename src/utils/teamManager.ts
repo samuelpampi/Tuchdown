@@ -1,8 +1,9 @@
-import { Team, Player, Position, PositionCategory } from "./utils";
+import { Team, Player, Stadium, Position, PositionCategory } from "./utils";
 
 class TeamManager{
     private teams: Team[] = [];
     private players: Player[] = [];
+    private stadiums: Stadium[] = [];
 
     //Hace la llamada a la API para cargar los equipos
     public async loadTeams() {
@@ -21,7 +22,7 @@ class TeamManager{
                 let newTeam: Team ={
                     id: team.TeamID,
                     key: team.Key,
-                    name: team.Name,
+                    name: team.FullName,
                     conference: team.Conference,
                     division: team.Division,
                     city: team.City,
@@ -81,20 +82,71 @@ class TeamManager{
         }
     }
 
+    //Hace la llamada a la API para cargar todos los stadios
+    public async loadStadiums() {
+        try {
+            let response: Response = await fetch(`https://api.sportsdata.io/v3/nfl/scores/json/Stadiums?key=83067119f3104d2e989a5c5238dc1fad`);
+    
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+            }
+    
+            let stadiums_json:any[] = await response.json();
+
+            //Generamos la lista de partidos con la interfaz
+            for(let stadium of stadiums_json){
+                let newStadium: Stadium = {
+                    id: stadium.StadiumID,
+                    name: stadium.Name,
+                    city: stadium.City,
+                    state: stadium.State,
+                    longitude: stadium.GeoLong,
+                    latitude: stadium.GeoLat
+                }
+
+                this.stadiums.push(newStadium);
+            }
+
+            console.log("Estadios cargados:", this.stadiums);
+        } catch (error) {
+            console.error("Error al cargar los partidos:", error);
+        }
+    }
+
+    
+
+    //---- Getters -------
+
+    //Devuelve todos los equipos
     public getTeams(){
         return this.teams;
     }
 
+    //Devuelve el equipo con ID
     public getTeam(id_team:number): Team | undefined{
-        for(let team of this.teams){
-            if (team.id == id_team){
-                return team;
-            }
-        }
+        return this.teams.find(team => team.id === id_team);
     }
 
+    //Devuelve todos los jugadores del equipo
     public getPlayers(){
         return this.players;
+    }
+
+    //Devuelve el estadio de un equipo
+    public getStadium(id_team: number): Stadium | undefined {
+        let team = this.teams.find(team => team.id === id_team);
+        
+        if (!team) {
+            console.error(`Equipo con ID ${id_team} no encontrado.`);
+            return undefined;
+        }
+    
+        if (!team.stadium) {
+            console.warn(`El equipo ${team.name} no tiene un estadio asignado.`);
+            return undefined;
+        }
+    
+        return this.stadiums.find(stadium => stadium.id === team.stadium);
     }
 }
 

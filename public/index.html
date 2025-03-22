@@ -7,6 +7,7 @@
     <title>Document</title>
 
     <script src="https://kit.fontawesome.com/8edc7916a1.js" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9LWIfJ9Mhe7UughWF-zIhF6p2IZAm9BA&callback=cargarDatos"></script>
 </head>
 <body>
     <!-- Barra principal de navegacion -->
@@ -148,8 +149,8 @@
 
         <!-- Seccion del mapa y estadio -->
         <section id="stadium-manager" class="pt-5 d-flex flex-column justify-content-center align-items-center">
-            <h2 id="stadium-name" class="fs-1 fw-bold">Highmark Stadium</h2>
-            <p id="staudion-city" class="fs-4 fw-medium">Orchard Park - NY</p>
+            <h2 id="stadium-name" class="fs-1 fw-bold"></h2>
+            <p id="staudion-city" class="fs-4 fw-medium"></p>
             <div id="map"></div>    
         </section> 
 
@@ -171,172 +172,10 @@
                             <th>%PG</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
                 </table>
 
                 <!-- Divisiones AFC -->
-                <table id="nfc-nth-table">
+                <table id="afc-nth-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -349,50 +188,9 @@
                             <th>%PG</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
+                    
                 </table>
-                <table id="nfc-wst-table">
+                <table id="afc-wst-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -405,50 +203,9 @@
                             <th>%PG</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
+                    
                 </table>
-                <table id="nfc-est-table">
+                <table id="afc-est-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -461,50 +218,9 @@
                             <th>%PG</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
+                    
                 </table>
-                <table id="nfc-sth-table">
+                <table id="afc-sth-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -516,49 +232,7 @@
                             <th>PT</th>
                             <th>%PG</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
+                    </thead>                    
                 </table>
             </div>
 
@@ -569,7 +243,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Conferencia Americana</th>
+                            <th>Conferencia Nacional</th>
                             <th>PJ</th>
                             <th>G</th>
                             <th>E</th>
@@ -577,173 +251,11 @@
                             <th>PT</th>
                             <th>%PG</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
+                    </thead>                    
                 </table>
 
                 <!-- Divisiones NFC -->
-                <table id="afc-nth-table">
+                <table id="nfc-nth-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -755,51 +267,9 @@
                             <th>PT</th>
                             <th>%PG</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
+                    </thead>                    
                 </table>
-                <table id="afc-wst-table">
+                <table id="nfc-wst-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -812,50 +282,8 @@
                             <th>%PG</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
                 </table>
-                <table id="afc-est-table">
+                <table id="nfc-est-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -868,50 +296,8 @@
                             <th>%PG</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
                 </table>
-                <table id="afc-sth-table">
+                <table id="nfc-sth-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -924,48 +310,6 @@
                             <th>%PG</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="team-name"><img src="./img/vikings.png" alt="Vikings" height="30px">Minnesota Vikings</td>
-                            <td>17</td>
-                            <td>15</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>285:326</td>
-                            <td>0.882</td>
-                        </tr>
-                    </tbody>
                 </table>
             </div> 
         </section>

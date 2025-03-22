@@ -5,8 +5,8 @@ class MatchManager{
     private season: number;
     private week: number;
     constructor(){
-        this.season = parseInt(sessionStorage.getItem('selectedSeason') || '0');
-        this.week = parseInt(sessionStorage.getItem('selectedWeek') || '0');
+        this.season = parseInt(sessionStorage.getItem('selectedSeason') || '2024');
+        this.week = parseInt(sessionStorage.getItem('selectedWeek') || '18');
     }
 
     //Hace la llamada a la API para cargar los partidos

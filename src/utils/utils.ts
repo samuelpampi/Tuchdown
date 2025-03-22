@@ -1,3 +1,15 @@
+enum Conference{
+    AFC = "AFC",
+    NFC = "NFC",
+}
+
+enum Division{
+    NTH = "North",
+    EST = "East",
+    WST = "West",
+    STH = "South"
+}
+
 enum PositionCategory{
     OFF = "Ofensiva",
     DEF = "Defensiva",
@@ -89,6 +101,8 @@ interface Ranking{
     percentage: number;
     points_for: number;
     points_against: number;
+    conference: string;
+    division: string;
 }
 
-export {Match, Stadium, Team, Player, Ranking, Position, PositionCategory};
+export {Match, Stadium, Team, Player, Ranking, Position, PositionCategory, Conference, Division};
