@@ -127,6 +127,11 @@ class TeamManager{
         return this.teams.find(team => team.id === id_team);
     }
 
+    //Devuelve el equipo con la KY
+    public getTeamKey(key_team:string): Team | undefined{
+        return this.teams.find(team => team.key === key_team);
+    }
+
     //Devuelve todos los jugadores del equipo
     public getPlayers(){
         return this.players;

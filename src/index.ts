@@ -8,9 +8,10 @@ import { TeamManager } from './utils/teamManager';
 import { RankingManager } from './utils/rankingManager';
 
 //Interfaces
-import { Position, PositionCategory, Team, Player, Stadium, Conference, Division, Ranking } from "./utils/utils";
+import { Position, PositionCategory, Team, Player, Stadium, Conference, Division, Ranking, Match } from "./utils/utils";
 
 //Elementos del DOM
+const carousel:HTMLDivElement = document.getElementById("carousel") as HTMLDivElement;
 const grid_nfc_tems:HTMLDivElement = document.getElementById("grid-nfc") as HTMLDivElement;
 const grid_afc_tems:HTMLDivElement = document.getElementById("grid-afc") as HTMLDivElement;
 const grid_offensive:HTMLDivElement = document.getElementById("grid-off") as HTMLDivElement;
@@ -20,38 +21,173 @@ const stadium_h2:HTMLHeadElement = document.getElementById("stadium-name") as HT
 const city_p:HTMLParagraphElement = document.getElementById("staudion-city") as HTMLParagraphElement;
 const mapa:HTMLDivElement = document.getElementById("map") as HTMLDivElement;
 const afc_table:HTMLTableElement = document.getElementById("afc-table") as HTMLTableElement;
-    const afc_nth_table:HTMLTableElement = document.getElementById("afc-nth-table") as HTMLTableElement;
-    const afc_est_table:HTMLTableElement = document.getElementById("afc-est-table") as HTMLTableElement;
-    const afc_wst_table:HTMLTableElement = document.getElementById("afc-wst-table") as HTMLTableElement;
-    const afc_sth_table:HTMLTableElement = document.getElementById("afc-sth-table") as HTMLTableElement;
+const afc_nth_table:HTMLTableElement = document.getElementById("afc-nth-table") as HTMLTableElement;
+const afc_est_table:HTMLTableElement = document.getElementById("afc-est-table") as HTMLTableElement;
+const afc_wst_table:HTMLTableElement = document.getElementById("afc-wst-table") as HTMLTableElement;
+const afc_sth_table:HTMLTableElement = document.getElementById("afc-sth-table") as HTMLTableElement;
 const nfc_table:HTMLTableElement = document.getElementById("nfc-table") as HTMLTableElement;
-    const nfc_nth_table:HTMLTableElement = document.getElementById("nfc-nth-table") as HTMLTableElement;
-    const nfc_est_table:HTMLTableElement = document.getElementById("nfc-est-table") as HTMLTableElement;
-    const nfc_wst_table:HTMLTableElement = document.getElementById("nfc-wst-table") as HTMLTableElement;
-    const nfc_sth_table:HTMLTableElement = document.getElementById("nfc-sth-table") as HTMLTableElement;
+const nfc_nth_table:HTMLTableElement = document.getElementById("nfc-nth-table") as HTMLTableElement;
+const nfc_est_table:HTMLTableElement = document.getElementById("nfc-est-table") as HTMLTableElement;
+const nfc_wst_table:HTMLTableElement = document.getElementById("nfc-wst-table") as HTMLTableElement;
+const nfc_sth_table:HTMLTableElement = document.getElementById("nfc-sth-table") as HTMLTableElement;
 
+var index = 0;
+var teamManager:TeamManager;
+var matches:Match[] = [];
 
 //Carga los partidos en la página
-async function cargarPartidos(){
+async function cargarPartidos() {
     //Creamos instancia de MatchManager
     const matchManager: MatchManager = new MatchManager();
 
     //Obtenemos los partidos
     await matchManager.loadMatches();
-    let matches = matchManager.getMatches();
+    matches = matchManager.getMatches();
 
-    //Mostramos los partidos en el carrusel
     console.log(matches);
+
+    //Habilitamos botones del carousel
+    let carouselBack: HTMLButtonElement = document.getElementById("carousel_back") as HTMLButtonElement;
+    let carouselNext: HTMLButtonElement = document.getElementById("carousel_next") as HTMLButtonElement;
+    carouselBack.addEventListener('click', prevCard);
+    carouselNext.addEventListener('click', nextCard);
+
+    //Construir el carousel de partidos
+    crearCarousel();
 }
+
+//Inicializa el carrusel de cartas (solo una vez)
+function crearCarousel() {
+    carousel.innerHTML = "";
+
+    for (let i = 0; i < matches.length; i++) {
+        let card = createMatchCard(matches[i]);
+        carousel.appendChild(card);
+    }
+
+    // Aplicamos las clases para la posición inicial
+    updateCarousel();
+}
+
+//Actualiza las clases para la animación del carrusel
+function updateCarousel() {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card, i) => {
+        card.classList.remove("center", "left", "right", "hidden");
+
+        if (i === index) {
+            card.classList.add("center");
+        } else if (i === (index + 1) % matches.length) {
+            card.classList.add("right");
+        } else if (i === (index - 1 + matches.length) % matches.length) {
+            card.classList.add("left");
+        } else {
+            card.classList.add("hidden");
+        }
+    });
+}
+
+//Devuelve el elemento html de la carta del partido
+function createMatchCard(match: Match): HTMLElement {
+    let card: HTMLDivElement = document.createElement('div');
+    card.classList.add("card", "text-center", "px-3", "py-4", "d-flex", "flex-column", "justify-content-around", "align-items-center");
+
+    //Recuperamos los datos del equipo local
+    let teamHome: Team | undefined = teamManager.getTeamKey(match.home_team); 
+    let homeTeamDiv: HTMLDivElement = document.createElement('div');
+    homeTeamDiv.classList.add("d-flex", "flex-column", "align-items-center", "match-team");
+
+    //Verificación de que el equipo local existe
+    if (teamHome) {
+        let imgHomeTeam: HTMLImageElement = document.createElement('img');
+        imgHomeTeam.src = teamHome.logo;
+        imgHomeTeam.alt = `Escudo de ${teamHome.name}`;
+        imgHomeTeam.width = 70;
+
+        let pHomeTeam: HTMLParagraphElement = document.createElement('p');
+        pHomeTeam.classList.add("fs-6", "fw-bold");
+        pHomeTeam.innerText = teamHome.name;
+
+        homeTeamDiv.appendChild(imgHomeTeam);
+        homeTeamDiv.appendChild(pHomeTeam);
+    } else {
+        homeTeamDiv.innerText = "Equipo no encontrado";
+    }
+
+    //Recuperamos los datos del equipo visitante
+    let teamAway: Team | undefined = teamManager.getTeamKey(match.away_team); 
+    let awayTeamDiv: HTMLDivElement = document.createElement('div');
+    awayTeamDiv.classList.add("d-flex", "flex-column", "align-items-center", "match-team");
+
+    //Verificación de que el equipo visitante existe
+    if (teamAway) {
+        let imgAwayTeam: HTMLImageElement = document.createElement('img');
+        imgAwayTeam.src = teamAway.logo;
+        imgAwayTeam.alt = `Escudo de ${teamAway.name}`;
+        imgAwayTeam.width = 70;
+
+        let pAwayTeam: HTMLParagraphElement = document.createElement('p');
+        pAwayTeam.classList.add("fs-6", "fw-bold");
+        pAwayTeam.innerText = teamAway.name;
+
+        awayTeamDiv.appendChild(imgAwayTeam);
+        awayTeamDiv.appendChild(pAwayTeam);
+    } else {
+        awayTeamDiv.innerText = "Equipo no encontrado";
+    }
+
+
+    //Completamos el bloque de los equipos
+    let teamsMatch: HTMLDivElement = document.createElement('div');
+    teamsMatch.classList.add("d-flex", "justify-content-between", "align-items-center", "gap-3", "mb-4");
+
+    let vs: HTMLParagraphElement = document.createElement('p');
+    vs.classList.add("fs-6", "fw-semibold");
+    vs.innerText = "VS";
+
+    teamsMatch.appendChild(homeTeamDiv);
+    teamsMatch.appendChild(vs);
+    teamsMatch.appendChild(awayTeamDiv);
+
+    
+    //Completamos el bloque del horario y fecha
+    let schedulerDiv: HTMLDivElement = document.createElement("div");
+
+    let location: HTMLHeadElement = document.createElement('h5');
+    location.classList.add("card-title", "fw-semibold", "fs-6");
+    location.innerText = teamHome?.city || "Ciudad no disponible";
+
+    let date: HTMLParagraphElement = document.createElement('p');
+    date.classList.add("card-text", "fw-medium", "fs-6");
+    date.innerText = match.date || "Fecha no disponible";
+
+    schedulerDiv.appendChild(location);
+    schedulerDiv.appendChild(date);
+
+
+    //Completamos la carta
+    card.appendChild(teamsMatch);
+    card.appendChild(schedulerDiv);
+
+    return card;
+}
+
+// Retrocede una posición en el carrusel
+function prevCard() {
+    index = (index - 1 + matches.length) % matches.length;
+    updateCarousel();
+}
+
+// Avanza una posición en el carrusel
+function nextCard() {
+    index = (index + 1) % matches.length;
+    updateCarousel();
+}
+
 
 //Carga los equipos en la página
 async function cargarEquipos(){
-    //Creamos instancia de TeamManager
-    const teamManager: TeamManager = new TeamManager();
-
-    //Obtenemos los equipos y los estadios
-    await teamManager.loadTeams();
-    await teamManager.loadStadiums();
     let teams = teamManager.getTeams();
     
     //Recorremos los equipos y los agregamos al DOM
@@ -86,14 +222,14 @@ async function cargarEquipos(){
 
             //Cargamos jugadores
             let teamId:string = (event.target as HTMLImageElement).id;
-            cargarJugadores(teamManager, parseInt(teamId));
-            cargarEstadio(teamManager, parseInt(teamId));
+            cargarJugadores(parseInt(teamId));
+            cargarEstadio(parseInt(teamId));
         })
     }    
 }
 
 //Carga los jugadores de un equipo
-async function cargarJugadores(teamManager: TeamManager, id_team: number){    
+async function cargarJugadores(id_team: number){    
 
     //Cargamos jugadores de los Vikings
     await teamManager.loadPlayers(id_team);
@@ -136,7 +272,7 @@ async function cargarJugadores(teamManager: TeamManager, id_team: number){
 }
 
 //Carga el mapa con la ubicacion y la info del estadio de un equipo
-async function cargarEstadio(teamManager: TeamManager, id_team: number){
+async function cargarEstadio(id_team: number){
     //Cargamos todos los estadios
     let stadium: Stadium | undefined = teamManager.getStadium(id_team);
 
@@ -176,54 +312,50 @@ async function cargarEstadio(teamManager: TeamManager, id_team: number){
 async function cargarRanking(){
     //Creamos instancia de RankingManager
     const rankingManager: RankingManager = new RankingManager();
-    // Crear instancia de TeamManager para acceder a los equipos
-    const teamManager: TeamManager = new TeamManager();
-
-    await teamManager.loadTeams();
     await rankingManager.loadRanking();
 
     //Cargamos los ranking de la conferencia Americana y dibujamos las tablas
     var afc_ranking: Ranking[] = rankingManager.getConferenceRanking(Conference.AFC);
-    dibujarTablaRanking(afc_ranking, teamManager, afc_table);
+    dibujarTablaRanking(afc_ranking, afc_table);
 
     var afc_north_ranking: Ranking[] = rankingManager.getDivisionRanking(afc_ranking, Division.NTH);
-    dibujarTablaRanking(afc_north_ranking, teamManager, afc_nth_table);
+    dibujarTablaRanking(afc_north_ranking, afc_nth_table);
 
     var afc_east_ranking: Ranking[] = rankingManager.getDivisionRanking(afc_ranking, Division.EST);
-    dibujarTablaRanking(afc_east_ranking, teamManager, afc_est_table);
+    dibujarTablaRanking(afc_east_ranking, afc_est_table);
 
     var afc_west_ranking: Ranking[] = rankingManager.getDivisionRanking(afc_ranking, Division.WST);
-    dibujarTablaRanking(afc_west_ranking, teamManager, afc_wst_table);
+    dibujarTablaRanking(afc_west_ranking, afc_wst_table);
 
     var afc_south_ranking: Ranking[] = rankingManager.getDivisionRanking(afc_ranking, Division.STH);
-    dibujarTablaRanking(afc_south_ranking, teamManager, afc_sth_table);
+    dibujarTablaRanking(afc_south_ranking, afc_sth_table);
 
     //Cargamos los ranking de la conferencia Nacional y dibujamos las tablas
     var nfc_ranking: Ranking[] = rankingManager.getConferenceRanking(Conference.NFC);
-    dibujarTablaRanking(nfc_ranking, teamManager, nfc_table);
+    dibujarTablaRanking(nfc_ranking, nfc_table);
 
     var nfc_north_ranking: Ranking[] = rankingManager.getDivisionRanking(nfc_ranking, Division.NTH);
-    dibujarTablaRanking(nfc_north_ranking, teamManager, nfc_nth_table);
+    dibujarTablaRanking(nfc_north_ranking, nfc_nth_table);
 
     var nfc_east_ranking: Ranking[] = rankingManager.getDivisionRanking(nfc_ranking, Division.EST);
-    dibujarTablaRanking(nfc_east_ranking, teamManager, nfc_est_table);
+    dibujarTablaRanking(nfc_east_ranking, nfc_est_table);
 
     var nfc_west_ranking: Ranking[] = rankingManager.getDivisionRanking(nfc_ranking, Division.WST);
-    dibujarTablaRanking(nfc_west_ranking, teamManager, nfc_wst_table);
+    dibujarTablaRanking(nfc_west_ranking, nfc_wst_table);
 
     var nfc_south_ranking: Ranking[] = rankingManager.getDivisionRanking(nfc_ranking, Division.STH);
-    dibujarTablaRanking(nfc_south_ranking, teamManager, nfc_sth_table);    
+    dibujarTablaRanking(nfc_south_ranking, nfc_sth_table);    
 }
 
 //Dibuja un ranking en una tabla
-function dibujarTablaRanking(ranking: Ranking[], teamManager:TeamManager, htmlTable: HTMLTableElement){    
+function dibujarTablaRanking(ranking: Ranking[], htmlTable: HTMLTableElement){    
     //Crear el cuerpo de la tabla
     var tbody = document.createElement("tbody");
     let position = 1;
 
     //Crear filas del ranking
     ranking.forEach(rank => {
-        let row = crearRankingRow(position, rank, teamManager);
+        let row = crearRankingRow(position, rank);
         if(row){
             tbody.appendChild(row);
         }
@@ -237,7 +369,7 @@ function dibujarTablaRanking(ranking: Ranking[], teamManager:TeamManager, htmlTa
 }
 
 //Crea una fila del ranking
-function crearRankingRow(position:number, ranking: Ranking, teamManager: TeamManager){
+function crearRankingRow(position:number, ranking: Ranking){
     let team:Team | undefined = teamManager.getTeam(ranking.team_id);
     let tr = document.createElement("tr");
 
@@ -303,8 +435,25 @@ function crearRankingRow(position:number, ranking: Ranking, teamManager: TeamMan
 
 }
 
+
+
+
+
+
+//Carga los equipos en la página
+async function cargarAllTeams(){
+    //Creamos instancia de TeamManager
+    teamManager = new TeamManager();
+
+    //Obtenemos los equipos y los estadios
+    await teamManager.loadTeams();
+    await teamManager.loadStadiums();
+
+}
+
 //Carga los datos
-function cargarDatos(){
+async function cargarDatos(){
+    await cargarAllTeams(); //Carga todos los equipos y estadios en la web para luego utilizarlos
     cargarPartidos();
     cargarEquipos();
     cargarRanking();
